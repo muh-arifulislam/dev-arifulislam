@@ -1,13 +1,18 @@
+import { NavLink } from "react-router";
 import ProjectCard from "../components/Card/ProjectCard";
+import { useProjects } from "../hooks/useProjects";
+import { IProject } from "../types/project.types";
 
 const Projects = () => {
+  const { data } = useProjects();
+
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <a
+        <div className="text-center mb-8">
+          <NavLink
+            to={"/"}
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4"
-            href="/"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -22,70 +27,29 @@ const Projects = () => {
               ></path>
             </svg>
             Back to Home
-          </a>
-          <h1 className="text-4xl font-bold text-blue-900 mb-4">My Projects</h1>
-          <p className="text-blue-600 max-w-2xl mx-auto">
+          </NavLink>
+          <h1 className="text-4xl font-bold text-blue-900 dark:text-white/90 mb-4">
+            My Projects
+          </h1>
+          <p className="text-blue-600 dark:text-white/80 max-w-2xl mx-auto">
             Explore my latest projects and experiments. Each project represents
             a unique challenge and solution.
           </p>
         </div>
-        <div className="bg-white/80 backdrop-blue-lg rounded-3xl p-6 shadow-xl mb-8">
-          <div className="flex flex-col gap-4">
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <input
-                  type="text"
-                  placeholder="Search projects..."
-                  id="search"
-                  className="w-full px-4 py-2 rounded-xl bg-white border border-blue-100 focus:border-blue-500 focus:ring-2  focus:ring-blue-200 transition-colors"
-                />
-              </div>
-              <button className="px-4 py-2 text-blue-600 border border-blue-100 rounded-xl hover:bg-blue-50 transition-colors cursor-pointer">
-                Reset Filters
-              </button>
-            </div>
-            <div className="flex-1">
-              <p className="text-sm text-blue-600 mb-2">Filter by tags:</p>
-              <div className="flex flex-wrap gap-2">
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    value="Astro"
-                    className="tag-checkbox hidden"
-                  />
-                  <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
-                  </span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    value="Astro"
-                    className="tag-checkbox hidden"
-                  />
-                  <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
-                  </span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    value="Astro"
-                    className="tag-checkbox hidden"
-                  />
-                  <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
-                  </span>
-                </label>
-              </div>
-            </div>
+        <div className="">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {data?.data?.map((project: IProject) => (
+              <ProjectCard key={project?._id} data={project} />
+            ))}
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-        </div>
+        {/* <div className="bg-white/80 backdrop-blue-lg rounded-3xl p-6 shadow-xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {data?.data?.map((project: IProject) => (
+              <ProjectCard key={project?._id} data={project} />
+            ))}
+          </div>
+        </div> */}
       </div>
     </div>
   );
