@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://taasu-soap.web.app'],
+    origin: ['http://localhost:5173', 'https://dev-arifulislam.netlify.app'],
     credentials: true,
   }),
 );

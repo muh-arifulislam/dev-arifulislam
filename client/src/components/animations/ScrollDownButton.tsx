@@ -11,6 +11,7 @@ const ScrollDownButton = () => {
   return (
     <div className="flex items-center justify-center py-10">
       <motion.button
+        key={"scroll-down-button"}
         onClick={handleScroll}
         className="transform p-4 bg-gray-800 text-white rounded-full shadow-lg"
         initial={{ y: 0 }}

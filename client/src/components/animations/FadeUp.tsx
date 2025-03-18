@@ -31,6 +31,7 @@ export function FadeUp({
 
   return (
     <motion.div
+      key={"fade-up"}
       ref={ref}
       initial="hidden"
       animate={isInView ? "show" : ""}
@@ -45,9 +46,11 @@ export function FadeUp({
       }}
       className={className}
     >
-      {React.Children.map(children, (child) =>
+      {React.Children.map(children, (child, index) =>
         React.isValidElement(child) ? (
-          <motion.div variants={FADE_DOWN}>{child}</motion.div>
+          <motion.div key={index} variants={FADE_DOWN}>
+            {child}
+          </motion.div>
         ) : (
           child
         )

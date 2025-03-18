@@ -1,8 +1,10 @@
+import { NavLink } from "react-router";
+
 const BlogCard = () => {
   return (
     <article className="group border border-slate-200 dark:border-slate-200/10 rounded-2xl dark:bg-[#1f1f1f]">
-      <a
-        href="#"
+      <NavLink
+        to="/"
         className="block p-4 rounded-2xl hover:bg-blue-50/50 dark:hover:bg-transparent transition-all duration-300"
       >
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
@@ -22,7 +24,7 @@ const BlogCard = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit,
           officiis...
         </p>
-      </a>
+      </NavLink>
     </article>
   );
 };

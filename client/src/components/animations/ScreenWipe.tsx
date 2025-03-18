@@ -22,6 +22,7 @@ const ScreenWipe = () => {
       <>
         {/* Left panel (Starts slightly after middle div) */}
         <motion.div
+          key={"screen-wipe-left"}
           initial={{ scaleX: 1 }}
           animate={{ scaleX: 0 }}
           exit={{ scaleX: 1 }}
@@ -32,6 +33,7 @@ const ScreenWipe = () => {
         {/* Middle divider (Disappears immediately) */}
         {!isCompleted && (
           <motion.div
+            key={"screen-wipe-middle"}
             initial={{ scaleY: 0 }}
             animate={{
               scaleY: 1,
@@ -44,6 +46,7 @@ const ScreenWipe = () => {
 
         {/* Right panel (Starts slightly after middle div) */}
         <motion.div
+          key={"screen-wipe-right"}
           initial={{ scaleX: 1 }}
           animate={{ scaleX: 0 }}
           exit={{ scaleX: 1 }}

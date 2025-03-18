@@ -1,15 +1,17 @@
 import { NavLink } from "react-router";
-import ProjectCard from "../components/Card/ProjectCard";
-import { useProjects } from "../hooks/useProjects";
-import { IProject } from "../types/project.types";
+import ProjectCard from "../components/card/ProjectCard";
+import { IProject } from "../types/project";
+import ProjectSkeleton from "../components/skeleton/ProjectSkeleton";
+import NoData from "../components/ui/NoData";
+import { useProjects } from "../api/project/useProjects";
 
 const Projects = () => {
-  const { data } = useProjects();
+  const { data, isLoading } = useProjects();
 
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <NavLink
             to={"/"}
             className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4"
@@ -31,25 +33,24 @@ const Projects = () => {
           <h1 className="text-4xl font-bold text-blue-900 dark:text-white/90 mb-4">
             My Projects
           </h1>
-          <p className="text-blue-600 dark:text-white/80 max-w-2xl mx-auto">
-            Explore my latest projects and experiments. Each project represents
-            a unique challenge and solution.
-          </p>
         </div>
         <div className="">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {isLoading && (
+              <>
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+              </>
+            )}
+
             {data?.data?.map((project: IProject) => (
               <ProjectCard key={project?._id} data={project} />
             ))}
           </div>
         </div>
-        {/* <div className="bg-white/80 backdrop-blue-lg rounded-3xl p-6 shadow-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {data?.data?.map((project: IProject) => (
-              <ProjectCard key={project?._id} data={project} />
-            ))}
-          </div>
-        </div> */}
+        {data?.data?.length === 0 && <NoData />}
       </div>
     </div>
   );

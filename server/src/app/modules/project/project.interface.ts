@@ -17,8 +17,6 @@ export interface IProject extends Document {
   title: string;
   description: string;
   techStack: string[];
-  liveUrl?: string;
-  liveUrlAdditional?: string;
   image?: string;
   category: string;
   additionalMedia: IAdditionalMedium[];

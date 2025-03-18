@@ -8,6 +8,7 @@ interface AnimationProps {
 const FadeIn: React.FC<AnimationProps> = ({ children }) => {
   return (
     <motion.div
+      key={"fade-in"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

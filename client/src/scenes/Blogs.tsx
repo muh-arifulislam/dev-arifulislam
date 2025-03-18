@@ -1,7 +1,13 @@
 import { NavLink } from "react-router";
-import BlogCard from "../components/Card/BlogCard";
+import BlogCard from "../components/card/BlogCard";
+import { useGetBlogs } from "../api/blog/useGetBlogs";
+import ProjectSkeleton from "../components/skeleton/ProjectSkeleton";
+
+import NoData from "../components/ui/NoData";
+import { IBlog } from "../types/blog";
 
 const Blogs = () => {
+  const { data, isLoading } = useGetBlogs();
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -27,10 +33,6 @@ const Blogs = () => {
           <h1 className="text-4xl font-bold text-blue-900 dark:text-white/90 mb-4">
             My Blogs
           </h1>
-          <p className="text-blue-600 dark:text-white/80 max-w-2xl mx-auto">
-            Explore my latest projects and experiments. Each project represents
-            a unique challenge and solution.
-          </p>
         </div>
         <div className="">
           <div className="flex flex-col gap-4 mb-8">
@@ -38,7 +40,7 @@ const Blogs = () => {
               <div className="flex-1">
                 <input
                   type="text"
-                  placeholder="Search projects..."
+                  placeholder="Search blogs..."
                   id="search"
                   className="w-full px-4 py-2 rounded-xl bg-white border border-blue-100 focus:border-blue-500 focus:ring-2  focus:ring-blue-200 transition-colors"
                 />
@@ -57,7 +59,7 @@ const Blogs = () => {
                     className="tag-checkbox hidden"
                   />
                   <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
+                    Fullstack
                   </span>
                 </label>
                 <label className="inline-flex items-center">
@@ -67,7 +69,7 @@ const Blogs = () => {
                     className="tag-checkbox hidden"
                   />
                   <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
+                    React
                   </span>
                 </label>
                 <label className="inline-flex items-center">
@@ -77,17 +79,27 @@ const Blogs = () => {
                     className="tag-checkbox hidden"
                   />
                   <span className="px-3 py-1 rounded-full border border-blue-100 text-sm cursor-pointer hover:bg-blue-50 transition-colors tag-label">
-                    Astro
+                    Backend
                   </span>
                 </label>
               </div>
             </div>
           </div>
           <div className="grid grid-cols-1  gap-6">
-            <BlogCard />
-            <BlogCard />
-            <BlogCard />
+            {isLoading && (
+              <>
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+                <ProjectSkeleton />
+              </>
+            )}
+
+            {data?.data?.map((blog: IBlog) => (
+              <BlogCard key={blog?._id} />
+            ))}
           </div>
+          {data?.data?.length === 0 && <NoData />}
         </div>
       </div>
     </div>

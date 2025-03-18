@@ -9,6 +9,7 @@ interface AnimationProps {
 const SlideUpOnScroll: React.FC<AnimationProps> = ({ children, delay = 0 }) => {
   return (
     <motion.div
+      key={"slide-up-on-scroll"}
       initial={{ y: 100 }}
       whileInView={{ y: 0 }}
       exit={{ y: 0 }}

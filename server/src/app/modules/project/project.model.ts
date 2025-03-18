@@ -9,6 +9,7 @@ const additionalMediumSchema = new Schema<IAdditionalMedium>(
   {
     url: {
       type: String,
+      required: true,
     },
     title: {
       type: String,
@@ -16,12 +17,15 @@ const additionalMediumSchema = new Schema<IAdditionalMedium>(
     },
     description: {
       type: String,
+      default: null,
     },
     thumbnail: {
       type: String,
+      default: null,
     },
     order: {
       type: Number,
+      required: true,
     },
   },
   {
@@ -33,9 +37,11 @@ const projectDurationSchema = new Schema<IProjectDuration>(
   {
     from: {
       type: String,
+      required: true,
     },
     to: {
       type: String,
+      required: true,
     },
   },
   {
@@ -48,9 +54,11 @@ const projectSchema = new Schema<IProject>(
   {
     title: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     techStack: [
       {
@@ -59,12 +67,7 @@ const projectSchema = new Schema<IProject>(
     ],
     category: {
       type: String,
-    },
-    liveUrl: {
-      type: String,
-    },
-    liveUrlAdditional: {
-      type: String,
+      required: true,
     },
     image: {
       type: String,

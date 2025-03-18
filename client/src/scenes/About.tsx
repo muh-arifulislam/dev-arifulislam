@@ -35,10 +35,9 @@ const About = () => {
           </div>
           <div className="mb-12">
             <p className="text-lg font-medium text-slate-900/80 dark:text-white/80 leading-6 mb-6">
-              Hey, I'm Tania! I've been making websites since 1998 and I
-              currently work as a principal software engineer. I also have a DDR
-              machine in the basement, two cats, and a wonderful partner. I like
-              working out, playing video games, and reading.
+              Hey, I'm Arif! I've been making websites since 2022 and I
+              currently work as a fullstack software engineer. I like working
+              out, playing video games, and reading.
             </p>
             <p className="text-lg font-medium text-slate-900/80 dark:text-white/80 leading-6 mb-6">
               Welcome to my spot on the web for writing, projects, tutorials,
@@ -48,15 +47,10 @@ const About = () => {
               my open-source work.
             </p>
             <p className="text-lg font-medium text-slate-900/80 dark:text-white/80 leading-6 mb-6">
-              My site has no ads, no affiliate links, no tracking or analytics,
-              no sponsored posts, and no paywall. It's a space for
-              self-expression and to share what I've learned with the world. I
-              hope the site inspires others to make their own creative corner on
-              the web in the uphill battle against the enshittification of the
-              internet.
-            </p>
-            <p className="text-lg font-medium text-slate-900/80 dark:text-white/80 leading-6 mb-6">
-              You can contact me by email at hello at arifulislam20234@gmail.com
+              You can contact me by email at hello at{" "}
+              <span className="leading-none text-blue-600 border-b-2 border-transparent hover:border-blue-600">
+                muh.arifulislam.dev@gmail.com
+              </span>{" "}
               to say hi! I always appreciate meeting new people.
             </p>
           </div>
@@ -68,12 +62,13 @@ const About = () => {
             <ul className="list-disc px-4 space-y-2">
               <li>
                 <p className="font-bold text-lg">
-                  Email: hello@taniarascia.com
+                  Email: muh.arifulislam.dev@gmail.com
                 </p>
               </li>
               <li>
                 <a
-                  href="/"
+                  href="https://github.com/muh-arifulislam"
+                  target="_blank"
                   className="text-lg font-semibold leading-none border-b-2 border-transparent hover:border-blue-900 text-blue-900 dark:text-gray-50"
                 >
                   GitHub
@@ -81,7 +76,8 @@ const About = () => {
               </li>
               <li>
                 <a
-                  href="/"
+                  href="https://www.linkedin.com/in/muh-arifulislam/"
+                  target="_blank"
                   className="text-lg font-semibold leading-none border-b-2 border-transparent hover:border-blue-900 text-blue-900 dark:text-gray-50"
                 >
                   LinkedIn
@@ -89,7 +85,8 @@ const About = () => {
               </li>
               <li>
                 <a
-                  href="/"
+                  href="https://x.com/muh_arifulislam"
+                  target="_blank"
                   className="text-lg font-semibold leading-none border-b-2 border-transparent hover:border-blue-900 text-blue-900 dark:text-gray-50"
                 >
                   Twitter
@@ -97,7 +94,8 @@ const About = () => {
               </li>
               <li>
                 <a
-                  href="/"
+                  href="https://www.facebook.com/muh.arifulislam"
+                  target="_blank"
                   className="text-lg font-semibold leading-none border-b-2 border-transparent hover:border-blue-900 text-blue-900 dark:text-gray-50"
                 >
                   Facebook
@@ -113,12 +111,12 @@ const About = () => {
             <ul className="list-disc px-4 space-y-2">
               <li>
                 <p className="text-lg font-semibold text-slate-900/80 dark:text-gray-50">
-                  Working full-time
+                  Working as Freelancer
                 </p>
               </li>
-              <li className="text-lg font-semibold text-slate-900/80 dark:text-gray-50">
-                <p>Playing Marvel Rivals</p>
-              </li>
+              {/* <li className="text-lg font-semibold text-slate-900/80 dark:text-gray-50">
+                <p>Studying History and Philosophy</p>
+              </li> */}
             </ul>
           </div>
           <div className="mb-12">
@@ -126,7 +124,8 @@ const About = () => {
             <ul className="list-disc px-4 space-y-2">
               <li>
                 <a
-                  href="/"
+                  href="https://drive.google.com/file/d/1DoeIitDpUL1PkdSd0ri1yTYu7wfcxxxE/view?usp=drive_link"
+                  target="_blank"
                   className="text-lg font-semibold leading-none border-b-2  border-transparent hover:border-blue-900 text-blue-900 dark:text-gray-50"
                 >
                   Resume

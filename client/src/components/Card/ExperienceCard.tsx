@@ -1,33 +1,29 @@
-const ExperienceCard = () => {
+import DurationButton from "../ui/DurationButton";
+import TechButton from "../ui/TechButton";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ExperienceCard = ({ data }: { data: any }) => {
   return (
     <div className="border-l-2 border-blue-500 pl-4 pb-6">
       <div className="flex flex-col sm:flex-row justify-between items-start gap-2 mb-4">
         <div>
-          <h4 className="text-xl font-medium text-gray-700">
-            Senior Software Engineer
+          <h4 className="text-xl font-medium text-gray-700 dark:text-white/80">
+            {data?.title}
           </h4>
-          <p className="text-gray-500">Tech Solutions Inc.</p>
+          <p className="text-gray-500 dark:text-white/60">
+            {data?.institute} {data?.address}
+          </p>
         </div>
-        <span className="text-sm text-gray-400 bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">
-          2021 - Present
-        </span>
+        <DurationButton from={data?.durations?.from} to={data?.durations?.to} />
       </div>
-      <ul className="list-disc list-inside text-gray-600 mb-3 space-y-1">
-        <li>
-          Led development of cloud-native applications using microservices
-          architecture
-        </li>
-        <li>Mentored junior developers and conducted code reviews</li>
-        <li>Improved system performance by 40% through optimization</li>
+      <ul className="list-disc list-inside text-gray-600 dark:text-white/50 mb-3 space-y-1">
+        {data?.events?.map((event: string) => (
+          <li key={event}>{event}</li>
+        ))}
       </ul>
       <div className="flex flex-wrap gap-2">
-        {["React", "Node.js", "AWS", "Docker"].map((tech) => (
-          <span
-            key={tech}
-            className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
-          >
-            {tech}
-          </span>
+        {data?.tech?.map((tech: string) => (
+          <TechButton tech={tech} key={tech} />
         ))}
       </div>
     </div>

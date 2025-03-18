@@ -7,7 +7,7 @@ import { MenuButton } from "../components/button/MenuButton";
 import logo from "../assets/icons/logo.svg";
 import logoDark from "../assets/icons/logo-dark.svg";
 import ThemeToggleButton from "../components/button/ThemeToggleButton";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,10 +71,18 @@ const Navbar = () => {
             </ul>
             <div className="flex gap-[1px]">
               <ThemeToggleButton />
-              <a href="#" className="p-2">
+              <a
+                href="https://github.com/muh-arifulislam"
+                target="_blank"
+                className="p-2"
+              >
                 <FaGithub className="w-6 h-6" />
               </a>
-              <a href="#" className="p-2">
+              <a
+                href="https://www.linkedin.com/in/muh-arifulislam/"
+                target="_blank"
+                className="p-2"
+              >
                 <FaLinkedin className="w-6 h-6" />
               </a>
             </div>
