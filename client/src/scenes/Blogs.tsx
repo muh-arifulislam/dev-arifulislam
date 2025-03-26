@@ -5,14 +5,22 @@ import ProjectSkeleton from "../components/skeleton/ProjectSkeleton";
 
 import NoData from "../components/ui/NoData";
 import { IBlog } from "../types/blog";
-import { Helmet } from "react-helmet";
+import SEO from "../components/SEO";
 import config from "../utils/config";
 
 const Blogs = () => {
   const { data, isLoading } = useGetBlogs();
   return (
     <>
-      <Helmet title={`Articles | ${config.siteTitle}`} />
+      <SEO
+        title={`Articles - ${config.siteTitle}`}
+        description="Read my latest articles on web development, coding best practices, and industry trends."
+        keywords="Web Development Articles, JavaScript Tips, React Tutorials, Next.js Blog, Coding Best Practices"
+        ogTitle="Articles - Arif's Blog"
+        ogDescription="Stay updated with my latest technical articles on web development, covering React, TypeScript, and backend technologies."
+        ogUrl={`${config.siteUrl}blogs`}
+      />
+
       <div className="min-h-screen py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">

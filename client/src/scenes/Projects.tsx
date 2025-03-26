@@ -4,15 +4,23 @@ import { IProject } from "../types/project";
 import ProjectSkeleton from "../components/skeleton/ProjectSkeleton";
 import NoData from "../components/ui/NoData";
 import { useProjects } from "../api/project/useProjects";
+import SEO from "../components/SEO";
 import config from "../utils/config";
-import { Helmet } from "react-helmet";
 
 const Projects = () => {
   const { data, isLoading } = useProjects();
 
   return (
     <>
-      <Helmet title={`Projects | ${config.siteTitle}`} />
+      <SEO
+        title={`Projects - ${config.siteTitle}`}
+        description="Explore my portfolio of web development projects, including e-commerce, social media apps, and innovative web tools."
+        keywords="Web Development Projects, Full-Stack Projects, React, Node.js, Next.js, TypeScript, MERN, Portfolio"
+        ogTitle="Projects - Arif's Portfolio"
+        ogDescription="Discover my latest projects in web development, built using modern technologies like React, Next.js, and Node.js."
+        ogUrl={`${config.siteUrl}projects`}
+      />
+
       <div className="min-h-screen py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">

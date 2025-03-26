@@ -28,7 +28,8 @@ import { experiences } from "../data/experiences";
 import { educations } from "../data/educations";
 import { testimonials } from "../data/testimonials";
 import { statistics } from "../data/statistics";
-import { Helmet } from "react-helmet";
+
+import SEO from "../components/SEO";
 import config from "../utils/config";
 
 const Home = () => {
@@ -36,7 +37,15 @@ const Home = () => {
 
   return (
     <>
-      <Helmet title={config.siteTitle} />
+      <SEO
+        title={`${config.siteTitle}`}
+        description="Welcome to my awesome website!"
+        keywords="Full-Stack Developer, React, Vite, Home, My Website, Portfolio, Web Developer"
+        ogTitle="Arif's Website"
+        ogDescription="This is the homepage of my website, showcasing my projects, skills, and experience."
+        ogUrl={`${config.siteUrl}`}
+      />
+
       <div className="">
         <ScreenWipe />
         <div>
@@ -48,6 +57,7 @@ const Home = () => {
                     <img
                       src={profileImg}
                       className="w-full h-full object-cover"
+                      alt="profile"
                     />
                   </div>
 

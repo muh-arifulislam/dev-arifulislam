@@ -1,0 +1,21 @@
+{
+  "name": "dev-arifulislam",
+  "short_name": "Ariful Islam",
+  "description": "The portfolio website of Ariful Islam - Full-Stack Developer specializing in MERN stack, Next.js, and modern web technologies.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#f5f5f7",
+  "background_color": "#f5f5f7",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
