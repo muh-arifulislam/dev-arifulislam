@@ -1,42 +1,28 @@
 import { model, Schema } from 'mongoose';
-import { IUser, IUserAddress } from './user.interface';
-import { AccountType, UserRole } from './user.constant';
+import { IAddress, IUser } from './user.interface';
+import { UserRole } from './user.constant';
 
-const userAddressSchema = new Schema<IUserAddress>(
+const addressSchema = new Schema<IAddress>(
   {
-    addressLine1: {
+    street: {
       type: String,
-      default: null,
+      required: true,
     },
-    addressLine2: {
-      type: String,
-      default: null,
-    },
-    city: {
-      type: String,
-      default: null,
-    },
-    postalCode: {
-      type: String,
-      default: null,
-    },
+    city: { type: String, required: true },
+    country: { type: String, required: true },
+    postalCode: { type: Number, default: null },
   },
   {
     versionKey: false,
-    timestamps: true,
+    _id: false,
   },
-);
-
-export const UserAddress = model<IUserAddress>(
-  'UserAddress',
-  userAddressSchema,
 );
 
 const userSchema = new Schema<IUser>(
   {
     firstName: {
       type: String,
-      default: null,
+      required: true,
     },
     lastName: {
       type: String,
@@ -56,15 +42,6 @@ const userSchema = new Schema<IUser>(
       enum: [...UserRole],
       required: true,
     },
-    accountType: {
-      type: String,
-      enum: [...AccountType],
-      required: true,
-    },
-    googleId: {
-      type: String,
-      default: null,
-    },
     mobile: {
       type: String,
       default: null,
@@ -74,10 +51,7 @@ const userSchema = new Schema<IUser>(
       enum: ['male', 'female', 'third'],
       default: null,
     },
-    address: {
-      type: Schema.Types.ObjectId,
-      ref: 'UserAddress',
-    },
+    address: addressSchema,
   },
   {
     versionKey: false,

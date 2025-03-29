@@ -25,9 +25,21 @@ const getOneFromDB = async (id: string) => {
 };
 
 const getManyFromDB = async () => {
-  const result = await Project.find();
+  const projects = await Project.aggregate([
+    {
+      $addFields: {
+        parsedToDate: {
+          $dateFromString: {
+            dateString: { $concat: ['01 ', '$projectDuration.to'] },
+            format: '%d %b %Y',
+          },
+        },
+      },
+    },
+    { $sort: { parsedToDate: -1 } }, // -1 for descending order (latest first)
+  ]);
 
-  return result;
+  return projects;
 };
 
 const addManyIntoDB = async (payloadArr: IProject[]) => {

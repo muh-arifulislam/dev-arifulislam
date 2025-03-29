@@ -1,16 +1,54 @@
 import { z } from 'zod';
 
-const additionalValidationMediumSchema = z.object({
-  url: z.string().url({ message: 'Invalid URL format' }).optional(),
+const addAdditionalMediaSchema = z.object({
+  url: z.string().url({ message: 'Invalid URL format' }),
   title: z.string().min(1, { message: 'Title is required' }),
   description: z.string().optional(),
   thumbnail: z.string().url({ message: 'Invalid thumbnail URL' }).optional(),
   order: z.number().min(0, { message: 'Order must be a non-negative number' }),
 });
 
-const projectDurationValidationSchema = z.object({
-  from: z.string().url({ message: 'Project start date is required' }),
-  to: z.string().optional(),
+const updateAdditionalMediaSchema = z.object({
+  url: z.string().url({ message: 'Invalid URL format' }).optional(),
+  title: z.string().min(1, { message: 'Title is required' }).optional(),
+  description: z.string().optional(),
+  thumbnail: z.string().url({ message: 'Invalid thumbnail URL' }).optional(),
+  order: z
+    .number()
+    .min(0, { message: 'Order must be a non-negative number' })
+    .optional(),
+});
+
+const addProjectDurationSchema = z.object({
+  from: z
+    .string()
+    .regex(
+      /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/,
+      "Date must be in 'MMM YYYY' format (e.g., Mar 2025)",
+    ),
+  to: z
+    .string()
+    .regex(
+      /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/,
+      "Date must be in 'MMM YYYY' format (e.g., Mar 2025)",
+    ),
+});
+
+const updateProjectDurationSchema = z.object({
+  from: z
+    .string()
+    .regex(
+      /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/,
+      "Date must be in 'MMM YYYY' format (e.g., Mar 2025)",
+    )
+    .optional(),
+  to: z
+    .string()
+    .regex(
+      /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/,
+      "Date must be in 'MMM YYYY' format (e.g., Mar 2025)",
+    )
+    .optional(),
 });
 
 const addOneValidationSchema = z.object({
@@ -21,14 +59,9 @@ const addOneValidationSchema = z.object({
       z.string().min(1, { message: 'Tech stack item cannot be empty' }),
     ),
     category: z.string().min(1, { message: 'Category is required' }),
-    liveUrl: z.string().url({ message: 'Invalid live URL' }).optional(),
-    liveUrlAdditional: z
-      .string()
-      .url({ message: 'Invalid additional live URL' })
-      .optional(),
     image: z.string().url({ message: 'Invalid image URL' }).optional(),
-    additionalMedia: z.array(additionalValidationMediumSchema).optional(),
-    projectDuration: projectDurationValidationSchema,
+    additionalMedia: z.array(addAdditionalMediaSchema),
+    projectDuration: addProjectDurationSchema,
   }),
 });
 
@@ -49,22 +82,13 @@ const updateOneValidationSchema = z.object({
         .string()
         .min(1, { message: 'Category is required' })
         .optional(),
-      liveUrl: z
-        .string()
-        .url({ message: 'Invalid live URL' })
-        .optional()
-        .nullable(),
-      liveUrlAdditional: z
-        .string()
-        .url({ message: 'Invalid additional live URL' })
-        .optional()
-        .nullable(),
       image: z
         .string()
         .url({ message: 'Invalid image URL' })
         .optional()
         .nullable(),
-      additionalMedia: z.array(additionalValidationMediumSchema).optional(),
+      additionalMedia: z.array(updateAdditionalMediaSchema).optional(),
+      projectDuration: updateProjectDurationSchema,
     })
     .partial(),
 });

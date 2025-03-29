@@ -1,28 +1,19 @@
-import { Document, Types } from 'mongoose';
+export type TUserRole = 'admin';
 
-export type TUserRole = 'admin' | 'customer' | 'superAdmin';
+export interface IAddress {
+  street: string;
+  city: string;
+  country: string;
+  postalCode?: number;
+}
 
-export type TAccountType = 'email' | 'google';
-
-export interface IUser extends Document {
-  firstName?: string;
+export interface IUser {
+  firstName: string;
   lastName?: string;
   email: string;
-  password?: string;
+  password: string;
   role: TUserRole;
-  accountType: TAccountType;
-  googleId?: string;
-  mobile: string;
+  mobile?: string;
   gender: 'male' | 'female' | 'third';
-  address: Types.ObjectId;
+  address: IAddress;
 }
-
-// User Address Interface
-export interface IUserAddress {
-  addressLine1: string;
-  addressLine2?: string;
-  city: string;
-  postalCode: string;
-}
-
-export interface IUserPayload extends IUser, IUserAddress {}

@@ -72,8 +72,16 @@ const projectSchema = new Schema<IProject>(
     image: {
       type: String,
     },
-    additionalMedia: [additionalMediumSchema],
-    projectDuration: projectDurationSchema,
+    additionalMedia: [
+      {
+        type: additionalMediumSchema,
+        required: true,
+      },
+    ],
+    projectDuration: {
+      type: projectDurationSchema,
+      required: true,
+    },
   },
   {
     versionKey: false,

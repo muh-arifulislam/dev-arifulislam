@@ -9,7 +9,7 @@ import config from "../utils/config";
 
 const Projects = () => {
   const { data, isLoading } = useProjects();
-
+  console.log(data?.data);
   return (
     <>
       <SEO
