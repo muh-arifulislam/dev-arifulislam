@@ -10,6 +10,7 @@ import config from "../utils/config";
 
 const Blogs = () => {
   const { data, isLoading } = useGetBlogs();
+  console.log(data?.data);
   return (
     <>
       <SEO
