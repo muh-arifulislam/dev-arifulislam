@@ -1,4 +1,5 @@
 import { motion, Transition, SVGMotionProps } from "framer-motion";
+import { useTheme } from "../../context/ThemeContext";
 
 interface Props extends SVGMotionProps<SVGSVGElement> {
   isOpen?: boolean;
@@ -14,11 +15,11 @@ const MenuButton = ({
   width = 24,
   height = 16,
   strokeWidth = 2,
-  color = "#000",
   transition = {}, // Defaulted to an empty object instead of `null`
   lineProps = {}, // Defaulted to an empty object instead of `null`
   ...props
 }: Props) => {
+  const { theme } = useTheme();
   const variant = isOpen ? "opened" : "closed";
 
   const top = {
@@ -37,7 +38,7 @@ const MenuButton = ({
   };
 
   const mergedLineProps = {
-    stroke: color,
+    stroke: theme === "light" ? "#181818" : "#fbf9fa",
     strokeWidth: strokeWidth as number,
     vectorEffect: "non-scaling-stroke",
     initial: "closed",
