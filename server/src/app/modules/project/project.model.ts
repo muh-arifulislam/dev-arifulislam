@@ -82,6 +82,10 @@ const projectSchema = new Schema<IProject>(
       type: projectDurationSchema,
       required: true,
     },
+    isFeatured: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     versionKey: false,

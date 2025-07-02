@@ -21,4 +21,5 @@ export interface IProject extends Document {
   category: string;
   additionalMedia: IAdditionalMedium[];
   projectDuration: IProjectDuration;
+  isFeatured: boolean;
 }

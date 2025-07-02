@@ -48,10 +48,32 @@ const addManyIntoDB = async (payloadArr: IProject[]) => {
   return result;
 };
 
+const getFeaturedProjectsFromDB = async () => {
+  const featured = await Project.aggregate([
+    {
+      $match: { isFeatured: true },
+    },
+    {
+      $addFields: {
+        parsedToDate: {
+          $dateFromString: {
+            dateString: { $concat: ['01 ', '$projectDuration.to'] },
+            format: '%d %b %Y',
+          },
+        },
+      },
+    },
+    { $sort: { parsedToDate: -1 } }, // -1 for descending order (latest first)
+  ]);
+
+  return featured;
+};
+
 export const ProjectServices = {
   addOneIntoDB,
   deleteOneFromDB,
   getOneFromDB,
   getManyFromDB,
   addManyIntoDB,
+  getFeaturedProjectsFromDB,
 };

@@ -33,7 +33,9 @@ import SEO from "../components/SEO";
 import config from "../utils/config";
 
 const Home = () => {
-  const { data, isLoading } = useProjects();
+  const {
+    featuredProjects: { data, isLoading },
+  } = useProjects();
 
   return (
     <>
@@ -83,11 +85,13 @@ const Home = () => {
                           Get in Touch
                         </Button>
                       </a>
-                      <NavLink to={"https://github.com/muh-arifulislam"}>
-                        <Button variant="secondary">
-                          Give me start on GitHub
-                        </Button>
-                      </NavLink>
+                      <a
+                        href="https://drive.google.com/uc?export=download&id=1DoeIitDpUL1PkdSd0ri1yTYu7wfcxxxE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button variant="secondary">Download Resume</Button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -277,7 +281,7 @@ const Home = () => {
                           <ProjectSkeleton />
                         </>
                       )}
-                      {data?.data?.slice(0, 2)?.map((item: IProject) => (
+                      {data?.data?.map((item: IProject) => (
                         <ProjectCard key={item?._id} data={item} />
                       ))}
                     </div>

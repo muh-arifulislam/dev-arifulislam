@@ -55,10 +55,21 @@ const updateProject = catchAsync(async (req, res) => {
   });
 });
 
+const getFeaturedProjects = catchAsync(async (req, res) => {
+  const result = await ProjectServices.getFeaturedProjectsFromDB();
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Featured projects data updated successfully',
+    data: result,
+  });
+});
+
 export const ProjectControllers = {
   addProject,
   getProject,
   updateProject,
   getProjects,
   addProjects,
+  getFeaturedProjects,
 };

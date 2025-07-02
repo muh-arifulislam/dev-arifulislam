@@ -7,6 +7,8 @@ import { USER_ROLE } from '../user/user.constant';
 
 const router = express.Router();
 
+router.get('/featured', ProjectControllers.getFeaturedProjects);
+
 router.get('/:id', ProjectControllers.getProject);
 
 router.post(

@@ -8,7 +8,9 @@ import SEO from "../components/SEO";
 import config from "../utils/config";
 
 const Projects = () => {
-  const { data, isLoading } = useProjects();
+  const {
+    projects: { data, isLoading },
+  } = useProjects();
 
   return (
     <>

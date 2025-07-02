@@ -21,4 +21,12 @@ export const skills: ISkill[] = [
   { icon: "🖥️", name: "cPanel", order: 18 },
   { icon: "📝", name: "VS Code", order: 19 },
   { icon: "🐍", name: "Python", order: 20 },
+  { icon: "🔍", name: "SEO", order: 26 },
+  { icon: "🌐", name: "REST API", order: 28 },
+  { icon: "🤝", name: "Teamwork", order: 21 },
+  { icon: "🗣️", name: "Communication", order: 22 },
+  { icon: "🧠", name: "Problem Solving", order: 23 },
+  { icon: "⏰", name: "Time Management", order: 24 },
+  { icon: "🎯", name: "Goal Oriented", order: 25 },
+  { icon: "📚", name: "Continuous Learning", order: 27 },
 ];
